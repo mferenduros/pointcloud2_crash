@@ -1,0 +1,11 @@
+<launch>
+    <arg name="ordered_pc" default="true"/>
+
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="ordered_pc" value="$(arg ordered_pc)"/>
+    </include>
+
+    <node pkg="pointcloud2_crash" type="node" name="node" output="screen">
+        <param name="topic" value="/camera/depth/color/points"/>
+    </node>
+</launch>
